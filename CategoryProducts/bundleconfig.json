@@ -1,0 +1,14 @@
+[
+  {
+    "outputFileName": "wwwroot/css/CustomerBootStrary.min.css",
+    "inputFiles": [
+      "wwwroot/css/CustomerBootStrary.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/ImagePreview.min.js",
+    "inputFiles": [
+      "wwwroot/js/ImagePreview.js"
+    ]
+  }
+]

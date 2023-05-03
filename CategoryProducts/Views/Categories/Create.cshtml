@@ -1,0 +1,52 @@
+﻿@model CategoryProducts.Models.Category
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Category</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CategoryName" class="control-label"></label>
+                <input asp-for="CategoryName" class="form-control" />
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Picture" class="control-label"></label>
+                @*在上傳內設定預覽圖片*@
+                <img id="imgPreview" style="width:550px;height:600px" src=@Url.Content("~/lib/images/4004_gawr-gura.png") tittle="未有圖片''" />
+                <input type="file" asp-for="Picture" accept="image/*" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/imagepreview.min.js"></script>
+    <script>
+        //alert("change");偵錯用觸發
+
+        $("#Picture").change(function(){
+            readURL(this, $("#imgPreview"));
+        });
+    </script>
+}

@@ -1,0 +1,66 @@
+﻿@section Styles
+{
+    <link href="~/lib/datatables/css/jquery.datatables.min.css" rel="stylesheet" />
+    <style>
+        thead{
+            background-color:salmon;
+            color:black;
+            font-size :20px;
+        }
+
+    </style>
+}
+
+<table class="table table-hover tabletable-striped">
+    <thead>
+        <tr>
+            <td>ProductName</td>
+            <td>SupplierID</td>
+            <td>CategoryID</td>
+            <td>QuantityPerUnit</td>
+            <td>UnitPrice</td>
+            <td>UnitsInStock</td>
+            <td>UnitsOnOrder</td>
+            <td>ReorderLevel</td>
+            <td>Discontinued</td>
+        </tr>
+    </thead>
+</table>
+
+@section Scripts
+{
+    <script src="~/lib/datatables/js/jquery.datatables.min.js"></script>
+    <script src="//cdn.datatables.net/fixedheader/3.3.2/js/dataTables.fixedHeader.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            //alert("收到ㄌ");
+            $('table').dataTable({
+                ajax:{
+                    type:'POST',
+                    url: "/Products/Index/Json",
+                    dataSrc:function(json){
+                      
+                        return json;}
+                },
+                columns:[
+                            { "data": "productName", "width": "11%" },
+                            { "data": "supplierId", "width": "11%" },
+                            { "data": "categoryId", "width": "11%" },
+                            { "data": "quantityPerUnit", "width": "11%" },
+                            { "data": "unitPrice", "width": "11%" },
+                            { "data": "unitsInStock", "width": "11%" },
+                            { "data": "unitsOnOrder", "width": "11%" },
+                            { "data": "reorderLevel", "width": "11%" },
+                            { "data": "discontinued", "width": "11%" }
+                ],
+                fixedHeader:{
+                    header:true,
+                },
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/zh-HANT.json',
+                }
+
+            });
+        });
+    </script>
+}

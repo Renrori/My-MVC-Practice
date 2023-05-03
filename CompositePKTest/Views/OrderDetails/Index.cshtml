@@ -1,0 +1,58 @@
+﻿@model IEnumerable<CompositePKTest.Models.OrderDetails>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UnitPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Discount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discount)
+            </td>
+            <td>
+               @* @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) *@
+               
+               <a asp-area="" asp-controller="OrderDetails" asp-action="Edit"
+               asp-route-OrderId="@item.OrderId" asp-route-ProductId="@item.ProductId">編輯</a>
+
+               @* @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) *@
+                <a asp-area="" asp-controller="OrderDetails" asp-action="Details" 
+                asp-route-OrderId="@item.OrderId" asp-route-ProductId="@item.ProductId">詳細</a>  |
+
+
+                @*@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                    <a asp-area="" asp-controller="OrderDetails" asp-action="Delete"
+                   asp-route-OrderId="@item.OrderId" asp-route-ProductId="@item.ProductId">刪除</a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

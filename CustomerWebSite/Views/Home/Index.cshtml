@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <cache expires-after="@TimeSpan.FromMinutes(1)">@DateTime.Now</cache>
+    <h4>@ViewBag.小瑠理</h4>
+    <h4>@ViewBag.瑠理</h4>
+    <h4>@ViewBag.Customer.Phone</h4>
+    <h4>@TempData["THM101"]</h4>
+    <select asp-items="@ViewBag.Customers"></select>
+</div>
+<div>
+    <img src="~/lib/images/4004_gawr-gura.png" asp-append-version="true" />   
+</div>
+
+@section Scripts
+{
+<script>
+    @Html.Raw(ViewBag.JavaScript)
+</script>
+}
+

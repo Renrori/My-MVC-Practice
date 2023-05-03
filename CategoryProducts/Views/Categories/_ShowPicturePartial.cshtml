@@ -1,0 +1,11 @@
+﻿@model Category
+
+@if (Model.Picture != null)
+{
+    <img  src="@Url.Action("GetPicture","Categories",
+            new {id=Model.CategoryId})/" title="@Model.CategoryName" />
+}
+else
+{
+     <img src=@Url.Content("~/lib/images/4004_gawr-gura.png") title="A"/>
+}
